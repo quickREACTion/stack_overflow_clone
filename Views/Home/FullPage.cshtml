@@ -1,0 +1,104 @@
+@model Comments
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Full Message</title>
+    <style>
+        #container {
+            width: 100em;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, lightgray, white);
+        }
+
+        .footerMainDiv {
+            position: inherit !important;
+            margin-top: 0 !important;
+            height: 8em !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="sideBarNavMainDiv">
+            <h1>Stack Attack</h1>
+            <div class="mainDashboardHeaderDiv">
+                <div class="mainDashboardHeaderProfileDiv">
+                    <img src="~/images/placeholderProfile.png" class="profilePic">
+                    <h3 class="profileUserName">@ViewBag.user.Username</h3>
+                    <a href="/Profile/@ViewBag.user.usersId" class="profileUserName"><i class="fas fa-user"></i>View Profile</a>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/Dashboard"><i class="fas fa-home"></i>Dashboard</a></li>
+                    <li><a href="/Profile/@ViewBag.user.usersId"><i class="fas fa-user"></i>Profile</a></li>
+                    <li><a href="/Create"><i class="fas fa-edit"></i></i></i>Create Post</a></li>
+                    <li><a href="/"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                </ul>
+
+            </nav>
+            <div class="cfb"></div>
+        </div>
+
+        <div class="FullPageHeaderDiv">
+            <h1>@ViewBag.curMessage.Message</h1>
+        </div>
+
+        <div class="FullPageHeaderDiv">
+            <p>@ViewBag.curMessage.Description</p>
+        </div>
+
+        <div class="FullPageHeaderDiv">
+            <p>Code Snippit: </p>
+            <pre>@ViewBag.curMessage.CodeSnippit</pre>
+        </div>
+
+        <div class="FullPageHeaderDivLast">
+            <p>Steps taken to resolve: </p>
+            <pre>@ViewBag.curMessage.Bug</pre>
+        </div>
+
+        <div class="displaCommentsMainDiv">
+            @{
+                foreach(var allCom in @ViewBag.ac) {
+                    <h3>@allCom.Comments.Count Answers</h3>
+                    foreach(var ac in @allCom.Comments) {
+                        <div id="jump2comment" class="displayCommentsDiv">
+                            <p class="displayTimeInComments"><a href="/Profile/@ac.User.usersId">@ac.User.Username</a> @ac.created_at.ToString("MMM dd yy") at @ac.created_at.ToString("h:mm tt")</p>
+                            <pre class="displayComments">@ac.Comment</pre>
+                        <div class="cfb"></div>
+                        </div>
+                    }   
+                }
+            }
+            <div class="cfb"></div>
+        </div>
+
+        <div class="FullPageCommentHeaderDiv">
+            <form asp-action="Answer" asp-controller="Home" method="POST">
+                <p>Post an Answer: </p>
+                <textarea type="text" asp-for="Comment" row="6"></textarea>
+                <input type="hidden" name="mid" value=@ViewBag.curMessage.messagesId>
+                <input type="Submit" name="submit" value="Submit Answer">
+            </form>
+        </div>
+
+        <div class="cfb"></div>
+        
+        <div class="footerMainDiv">
+            <h1>Stack Attack</h1>
+            <ul>
+                <li><a href="/Dashboard"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li><a href="/Profile/@ViewBag.user.usersId"><i class="fas fa-user"></i>Profile</a></li>
+                <li><a href="/"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+            </ul>
+        </div>
+        <div class="cfb"></div>
+    </div>
+</body>
+</html>

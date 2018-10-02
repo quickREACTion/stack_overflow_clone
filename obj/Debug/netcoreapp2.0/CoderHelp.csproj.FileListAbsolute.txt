@@ -1,0 +1,11 @@
+C:\Users\Chris Herrick\Desktop\Coding Dojo\C# Project Week\CoderHelp\bin\Debug\netcoreapp2.0\CoderHelp.deps.json
+C:\Users\Chris Herrick\Desktop\Coding Dojo\C# Project Week\CoderHelp\bin\Debug\netcoreapp2.0\CoderHelp.runtimeconfig.json
+C:\Users\Chris Herrick\Desktop\Coding Dojo\C# Project Week\CoderHelp\bin\Debug\netcoreapp2.0\CoderHelp.runtimeconfig.dev.json
+C:\Users\Chris Herrick\Desktop\Coding Dojo\C# Project Week\CoderHelp\bin\Debug\netcoreapp2.0\CoderHelp.dll
+C:\Users\Chris Herrick\Desktop\Coding Dojo\C# Project Week\CoderHelp\bin\Debug\netcoreapp2.0\CoderHelp.pdb
+C:\Users\Chris Herrick\Desktop\Coding Dojo\C# Project Week\CoderHelp\obj\Debug\netcoreapp2.0\CoderHelp.csprojResolveAssemblyReference.cache
+C:\Users\Chris Herrick\Desktop\Coding Dojo\C# Project Week\CoderHelp\obj\Debug\netcoreapp2.0\CoderHelp.csproj.CoreCompileInputs.cache
+C:\Users\Chris Herrick\Desktop\Coding Dojo\C# Project Week\CoderHelp\obj\Debug\netcoreapp2.0\CoderHelp.AssemblyInfoInputs.cache
+C:\Users\Chris Herrick\Desktop\Coding Dojo\C# Project Week\CoderHelp\obj\Debug\netcoreapp2.0\CoderHelp.AssemblyInfo.cs
+C:\Users\Chris Herrick\Desktop\Coding Dojo\C# Project Week\CoderHelp\obj\Debug\netcoreapp2.0\CoderHelp.dll
+C:\Users\Chris Herrick\Desktop\Coding Dojo\C# Project Week\CoderHelp\obj\Debug\netcoreapp2.0\CoderHelp.pdb

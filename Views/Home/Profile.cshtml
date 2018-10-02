@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Profile</title>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            grid-template-rows: auto;
+            grid-template-areas: "header header header header" "main main bg bg" "footer footer footer footer";
+            row-gap: 20px;
+            grid-column-start: 3;
+            column-gap: 20px;
+                background: linear-gradient(to bottom, lightgray, white);
+        }
+
+        .customBackgroundATags {
+            background-color: transparent !important;
+            float: none !important;
+            color: rebeccapurple !important;
+            text-decoration: underline !important;          
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="container">
+            <div class="header-content">
+                <img src="~/images/placeholderProfile.png">
+                <div class="header-content-main">
+                    <h1>@ViewBag.cu.Username</h1>
+                    <a href="/Dashboard">Back to Dashboard</a>
+                @{
+                    if(@ViewBag.cu.Employment == null) {
+                        <p><strong>Employment:</strong><a href="/Edit" class="header-content-main-customPTag">(add new Employment)</a></p>
+                    } else {
+                        <p>Employment: @ViewBag.cu.Employment</p>
+                    }
+                } 
+                    @{
+                        if(ViewBag.isUser) {
+                            <a href="/Edit"><i class="fas fa-user-edit"></i>Edit</a>
+                        }
+                    }
+                </div>
+                <div class="cfb"></div>
+            </div>
+
+
+        <div class="posts-main">
+            <h3><i class="fas fa-edit"></i>Posts</h3>
+        @{
+            foreach(var message in @ViewBag.allMessages) {
+                if(message.usersId == @ViewBag.cu.usersId) {
+                <p class="posts-main-answers">@message.Comments.Count Answers</p>
+                }
+                if(message.usersId == @ViewBag.cu.usersId) {
+                    <a href="/FullPage/@message.messagesId">@message.Message</a>
+                    <h5>@message.created_at.ToString("MMM dd yy") at @message.created_at.ToString("h:mm tt")</h5>
+                    if(@message.Description.Length > 100) {
+                        <p>@message.Description.Substring(0, 100)..</p>
+                    } else {
+                        <p>@message.Description</p>
+                    }
+                }
+            }
+        }
+        </div>
+
+        <div class="background-main">
+            <h3>Background</h3>
+            @{
+                if(ViewBag.isUser) {
+                    <a href="/Edit"><i class="fas fa-user-edit"></i>Edit</a>
+                }
+            }
+            @{
+                if(@ViewBag.cu.Experience == null) {
+                    <p><strong>Experience: </strong><a href="/edit" class="customBackgroundATags">(add experience)</a></p>
+                } else {
+                    <p><strong>Experience:</strong> @ViewBag.cu.Experience</p>
+                }
+
+                if(@ViewBag.cu.Education == null) {
+                    <p><strong>Education: </strong><a href="/edit" class="customBackgroundATags">(add education)</a></p>
+                } else {
+                    <p><strong>Education:</strong> @ViewBag.cu.Education</p>
+                }
+
+                if(@ViewBag.cu.Bio == null) {
+                    <p><strong>Bio: </strong><a href="/edit" class="customBackgroundATags">(add bio)</a></p>
+                } else {
+                    <p><strong>Bio:</strong> @ViewBag.cu.Bio</p>
+                }
+            }
+            <div class="cfb"></div>
+        </div>
+
+        <div class="footer-main">
+            <h1>Stack Attack</h1>
+            <ul>
+                <li><a href="/Dashboard"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li><a href="/Profile/@ViewBag.cu.usersId"><i class="fas fa-user"></i>Profile</a></li>
+                <li><a href="/"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+            </ul>
+        </div>
+        <div class="cfb"></div>
+    </div>
+</body>
+</html>

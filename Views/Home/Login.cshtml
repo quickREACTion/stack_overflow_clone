@@ -1,0 +1,43 @@
+﻿@model UsersValidator
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Register</title>
+    <style>
+        #container {
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2 class="RegstrationHeader">Login</h2>
+
+        <div class="RegistrationFormMainDiv">
+            <form asp-action="Login" asp-controller="Home" method="POST">
+                <span asp-validation-for="Email"></span>
+                <input type="Email" asp-for="Email" placeholder="E-mail" class="RegistrationFormInput">
+                <span asp-validation-for="Password"></span>
+                <input type="password" asp-for="Password" placeholder="Password" class="RegistrationFormInput">
+
+                <input type="submit" name="register" value="Login" class="RegistrationSubmitButton">
+
+            </form>
+
+            <div class="AlreadyLoggedIn">
+                <h4>Need to Register ?</h4>
+                <a href="/">Register here</a>
+            </div>
+
+        </div>
+
+
+    </div>
+    
+</body>
+</html>

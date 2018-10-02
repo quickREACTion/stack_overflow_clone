@@ -1,0 +1,87 @@
+@model UsersValidator
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Edit</title>
+    <style>
+        #container {
+            width: 100em;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, lightgray, white);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="sideBarNavMainDiv">
+            <h1>Stack Attack</h1>
+            <div class="mainDashboardHeaderDiv">
+                <div class="mainDashboardHeaderProfileDiv">
+                    <img src="~/images/placeholderProfile.png" class="profilePic">
+                    <h3 class="profileUserName">@ViewBag.user.Username</h3>
+                    <a href="/Profile/@ViewBag.user.usersId" class="profileUserName"><i class="fas fa-user"></i>View Profile</a>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/Dashboard"><i class="fas fa-home"></i>Dashboard</a></li>
+                    <li><a href="/Profile/@ViewBag.user.usersId"><i class="fas fa-user"></i>Profile</a></li>
+                    <li><a href="/Create"><i class="fas fa-edit"></i></i></i>Create Message</a></li>
+                    <li><a href="/"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                </ul>
+
+            </nav>
+            <div class="cfb"></div>
+        </div>
+
+        <div class="formParentDiv">
+            <div style="margin-bottom: 10%;">
+                <h3><i class="fas fa-user-edit"></i>Edit Profile</h3>
+            </div>
+
+            <form asp-action="EditProfile" asp-controller="Home" method="POST">
+                <div class="ComposeMessageForm" style="margin-bottom: 5%;">
+                    <p>Employment: </p>
+                    <input type="text" asp-for="Employment" value=@ViewBag.user.Employment>
+                </div>
+
+                <div class="ComposeMessageForm" style="margin-bottom: 5%;">
+                    <p>Education: </p>
+                    <textarea asp-for="Education" row="6" value="@ViewBag.user.Education"></textarea>
+                </div>
+
+                <div class="ComposeMessageForm" style="margin-bottom: 5%;">
+                    <p>Experience: </p>
+                    <textarea asp-for="Experience" row="50" value="@ViewBag.user.Experience"></textarea>
+                </div>
+
+                <div class="ComposeMessageForm" style="margin-bottom: 5%;">
+                    <p>Bio: </p>
+                    <textarea asp-for="Bio" row="50" value=@ViewBag.user.Bio></textarea>
+                </div>
+                <input type="hidden" name="edituserEmp" value=@ViewBag.user.usersId>
+                <input type="submit" name="submit" value="Update Profile" class="ComposeMessageSubmitButton">
+            </form>
+
+
+        </div>
+
+        <div class="cfb"></div>
+
+        <div class="footerMainDiv">
+            <h1>Stack Attack</h1>
+            <ul>
+                <li><a href="/Dashboard"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li><a href="/Profile/@ViewBag.user.usersId"><i class="fas fa-user"></i>Profile</a></li>
+                <li><a href="/"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

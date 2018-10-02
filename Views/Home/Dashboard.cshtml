@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Dashboard</title>
+    <style>
+        #container {
+            width: 100em;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, lightgray, white);
+        }
+
+        .customLi:hover {
+            background-color: transparent !important;
+            color: black !important;
+        }
+
+        .footerMainDiv {
+            position: inherit !important;
+            margin-top: 0 !important;
+            height: 8em !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="sideBarNavMainDiv">
+            <h1>Stack Attack</h1>
+            <div class="mainDashboardHeaderDiv">
+                <div class="mainDashboardHeaderProfileDiv">
+                    <img src="~/images/placeholderProfile.png" class="profilePic">
+                    <h3 class="profileUserName">@ViewBag.user.Username</h3>
+                    <a href="/Profile/@ViewBag.user.usersId" class="profileUserName"><i class="fas fa-user"></i>View Profile</a>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li class="customLi"><i class="fas fa-home"></i>Dashboard</li>
+                    <li><a href="/Profile/@ViewBag.user.usersId"><i class="fas fa-user"></i>Profile</a></li>
+                    <li><a href="/Create"><i class="fas fa-edit"></i>Create Post</a></li>
+                    <li><a href="/"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                </ul>
+
+            </nav>
+            <div class="cfb"></div>
+        </div>
+
+        <div>
+
+            <div class="messageDashboardMainTable">
+            @{
+                foreach(var message in @ViewBag.allMessages) {
+                        <h4>Answers: </h4>
+                        <h4 style="border: 2px solid black;"><a href="/FullPage/@message.messagesId/#jump2comment">@message.Comments.Count</a></h4>
+                        <a href="/FullPage/@message.messagesId" class="DisplayPostedMessage">@message.Message</a>
+                        if(@message.Description.Length > 100) {
+                            <p>@message.Description.Substring(0, 100)..</p>
+                        } else {
+                            <p>@message.Description</p>
+                        }
+                    <div class="cfb"></div>
+                }
+            }
+            </div>
+        </div>
+        <div class="cfb"></div>
+
+        <div class="footerMainDiv">
+            <h1>Stack Attack</h1>
+            <ul>
+                <li class="customLi"><i class="fas fa-home"></i>Dashboard</li>
+                <li><a href="/Profile/@ViewBag.user.usersId"><i class="fas fa-user"></i>Profile</a></li>
+                <li><a href="/"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+            </ul>
+        </div>
+        <div class="cfb"></div>
+    </div>
+</body>
+</html>
